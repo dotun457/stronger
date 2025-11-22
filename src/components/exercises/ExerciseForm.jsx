@@ -98,7 +98,7 @@ export default function ExerciseForm({ onClose }) {
               <SelectValue />
             </SelectTrigger>
             <SelectContent>
-
+              <SelectItem value="compound">Compound</SelectItem>
               <SelectItem value="machine">Machine / Equipment</SelectItem>
               <SelectItem value="weighted_bodyweight">Bodyweight (can add weight)</SelectItem>
               <SelectItem value="assisted_bodyweight">Assisted Bodyweight</SelectItem>
