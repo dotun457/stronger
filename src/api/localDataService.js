@@ -205,7 +205,7 @@ export const WorkoutSession = {
 
 // Initialize with sample data if needed
 export const initializeSampleData = () => {
-  localStorage.clear(STORAGE_KEYS.exercises);
+  localStorage.removeItem(STORAGE_KEYS.exercises);
   const exercises = getFromStorage(STORAGE_KEYS.exercises);
   
   if (exercises.length === 0) {
