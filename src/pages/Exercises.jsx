@@ -4,7 +4,7 @@ import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
-import { Plus, Dumbbell, Search } from "lucide-react";
+import { Plus, Search, BicepsFlexed, Dumbbell, Cog, User, HandHelping, Heart, Clock } from "lucide-react";
 import ExerciseForm from "../components/exercises/ExerciseForm";
 
 const muscleColors = {
@@ -16,6 +16,17 @@ const muscleColors = {
   core: "from-pink-500 to-rose-600",
   full_body: "from-indigo-500 to-purple-600",
   cardio: "from-cyan-500 to-blue-600",
+};
+
+// Icon mapping for equipment types
+const equipmentIcons = {
+  compound: BicepsFlexed,
+  machine: Cog,
+  weighted_bodyweight: User,
+  assisted_bodyweight: HandHelping,
+  cardio: Heart,
+  duration: Clock,
+  dumbbell: Dumbbell,
 };
 
 export default function Exercises() {
@@ -82,7 +93,7 @@ export default function Exercises() {
                   : "border-slate-700 text-slate-300 hover:bg-slate-800"
                 }
               >
-                {muscle.replace('_', ' ')}
+                {muscle.replaceAll('_', ' ')}
               </Button>
             ))}
           </div>
@@ -95,22 +106,24 @@ export default function Exercises() {
           </div>
         ) : filteredExercises.length > 0 ? (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            {filteredExercises.map((exercise) => (
+            {filteredExercises.map((exercise) => {
+              const EquipmentIcon = equipmentIcons[exercise.equipment] || User;
+              return (
               <Card key={exercise.id} className="bg-slate-900/50 border-slate-800 backdrop-blur-sm hover:border-cyan-500/50 transition-all duration-300 p-5">
                 <div className="space-y-3">
                   <div className="flex items-start justify-between">
                     <div className={`w-12 h-12 bg-gradient-to-br ${muscleColors[exercise.muscle_group] || 'from-slate-600 to-slate-700'} rounded-xl flex items-center justify-center shadow-lg`}>
-                      <Dumbbell className="w-6 h-6 text-white" />
+                      <EquipmentIcon className="w-6 h-6 text-white" />
                     </div>
                     <span className="px-3 py-1 rounded-full text-xs font-semibold bg-slate-800 text-slate-300">
-                      {exercise.equipment}
+                      {exercise.equipment?.replaceAll('_', ' ')}
                     </span>
                   </div>
 
                   <div>
                     <h3 className="font-bold text-lg text-white mb-1">{exercise.name}</h3>
                     <p className="text-cyan-400 text-sm font-medium capitalize">
-                      {exercise.muscle_group.replace('_', ' ')} • {exercise.category}
+                      {exercise.muscle_group.replaceAll('_', ' ')} • {exercise.category}
                     </p>
                     {exercise.notes && (
                       <p className="text-slate-400 text-sm mt-2 line-clamp-2">{exercise.notes}</p>
@@ -118,7 +131,8 @@ export default function Exercises() {
                   </div>
                 </div>
               </Card>
-            ))}
+            );
+            })}
           </div>
         ) : (
           <Card className="bg-slate-900/50 border-slate-800 p-16 text-center">

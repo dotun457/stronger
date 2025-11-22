@@ -16,7 +16,7 @@ export default function ExerciseForm({ onClose }) {
     name: "",
     category: "strength",
     muscle_group: "chest",
-    equipment: "barbell",
+    equipment: "compound",
     notes: "",
   });
 
@@ -98,13 +98,12 @@ export default function ExerciseForm({ onClose }) {
               <SelectValue />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="barbell">Barbell</SelectItem>
-              <SelectItem value="dumbbell">Dumbbell</SelectItem>
-              <SelectItem value="machine">Machine</SelectItem>
-              <SelectItem value="bodyweight">Bodyweight</SelectItem>
-              <SelectItem value="cable">Cable</SelectItem>
-              <SelectItem value="bands">Bands</SelectItem>
-              <SelectItem value="other">Other</SelectItem>
+              <SelectItem value="compound">Compound</SelectItem>
+              <SelectItem value="machine">Machine / Equipment</SelectItem>
+              <SelectItem value="weighted_bodyweight">Bodyweight (can add weight)</SelectItem>
+              <SelectItem value="assisted_bodyweight">Assisted Bodyweight</SelectItem>
+              <SelectItem value="cardio">Cardio</SelectItem>
+              <SelectItem value="duration">Duration-based</SelectItem>
             </SelectContent>
           </Select>
         </div>

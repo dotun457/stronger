@@ -1,11 +1,9 @@
-/**
- * Local Client
- * This file used to connect to Base44 SDK, now uses local storage
- */
-import { localClient, initializeSampleData } from './localDataService';
 
-// Initialize sample data on first load
+import { localClient, initializeSampleData } from './localDataService';
+// import { createClient } from '@base44/sdk';
+
 initializeSampleData();
 
-// Export the local client as 'base44' to maintain compatibility with existing code
+// Using local mock data for now
+// Base44 integration can be added later when building proper auth flow
 export const base44 = localClient;
