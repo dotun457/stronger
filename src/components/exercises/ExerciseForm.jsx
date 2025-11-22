@@ -16,7 +16,7 @@ export default function ExerciseForm({ onClose }) {
     name: "",
     category: "strength",
     muscle_group: "chest",
-    equipment: "compund",
+    equipment: "compound",
     notes: "",
   });
 
