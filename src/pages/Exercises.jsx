@@ -93,7 +93,7 @@ export default function Exercises() {
                   : "border-slate-700 text-slate-300 hover:bg-slate-800"
                 }
               >
-                {muscle.replace('_', ' ')}
+                {muscle.replaceAll('_', ' ')}
               </Button>
             ))}
           </div>
@@ -116,14 +116,14 @@ export default function Exercises() {
                       <EquipmentIcon className="w-6 h-6 text-white" />
                     </div>
                     <span className="px-3 py-1 rounded-full text-xs font-semibold bg-slate-800 text-slate-300">
-                      {exercise.equipment?.replace('_', ' ')}
+                      {exercise.equipment?.replaceAll('_', ' ')}
                     </span>
                   </div>
 
                   <div>
                     <h3 className="font-bold text-lg text-white mb-1">{exercise.name}</h3>
                     <p className="text-cyan-400 text-sm font-medium capitalize">
-                      {exercise.muscle_group.replace('_', ' ')} • {exercise.category}
+                      {exercise.muscle_group.replaceAll('_', ' ')} • {exercise.category}
                     </p>
                     {exercise.notes && (
                       <p className="text-slate-400 text-sm mt-2 line-clamp-2">{exercise.notes}</p>
